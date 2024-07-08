@@ -24,7 +24,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td align="center">
+			<td class="content_box" align="center">
 				<form action="loginOk" method="post" name="loginForm">				
 				<table border="0" cellpadding="10" cellspacing="0">
 					<tr>

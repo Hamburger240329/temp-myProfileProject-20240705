@@ -22,6 +22,11 @@ input.btn01 {
 	font-family: NanumGothic;
 	font-size: 20px;
 	padding: 5px;
+	background-color: #cee30d;
+}
+
+td.content_box {
+	height: 450px;
 	background-color: #ECF87F;
 }
 
