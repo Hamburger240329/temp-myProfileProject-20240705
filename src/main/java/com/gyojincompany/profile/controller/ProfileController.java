@@ -1,7 +1,11 @@
 package com.gyojincompany.profile.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import jakarta.servlet.http.HttpServletRequest;
 
 @Controller
 public class ProfileController {
@@ -44,6 +48,12 @@ public class ProfileController {
 	@GetMapping(value = "/list")
 	public String list() {
 		return "boardlist";
+	}
+	
+	@PostMapping(value = "/joinOk")
+	public String joinOk(HttpServletRequest request, Model model) {
+		
+		return "joinOk";
 	}
 	
 }
