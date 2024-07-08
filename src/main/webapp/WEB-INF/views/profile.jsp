@@ -24,36 +24,18 @@
 			</td>
 		</tr>
 		<tr>
-			<td class="content_box" align="center">
-				<form action="loginOk" method="post" name="loginForm">				
+			<td class="content_box" align="center">							
 				<table border="0" cellpadding="10" cellspacing="0">
 					<tr>
-						<td align="right">
-							<span class="content_text">아 이 디 :</span>
-						</td>
-						<td>
-							<input class="input_box01" type="text" name="mid">
-						</td>
-					</tr>
-					<tr>
-						<td align="right">
-							<span class="content_text">비밀번호 :</span>
-						</td>
-						<td>
-							<input class="input_box01" type="password" name="mpw">
-						</td>
-					</tr>
-					<tr>
-						<td colspan="2">&nbsp;</td>
-					</tr>
-					<tr>
-						<td colspan="2" align="center">							
-							<input class="btn01" type="submit" value="로그인">
-							<input class="btn01" type="button" value="회원가입" onclick="javascript:window.location.href='join'">
-						</td>
-					</tr>
-				</table>
-				</form>
+						<td align="center">
+							<span class="content_text">							
+							안녕하세요 Web Application 백엔드 개발자 이교진입니다.<br>
+							보시고 계신 페이지는 SpringBoot Framework으로 개발되었습니다.<br>
+							웹 어플리케이션 개발 관련하여 궁금하신 점은 게시판을 이용해주세요.
+							</span>
+						</td>						
+					</tr>					
+				</table>				
 			</td>
 		</tr>
 	</table>

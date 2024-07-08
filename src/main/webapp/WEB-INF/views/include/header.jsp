@@ -20,16 +20,16 @@
 				<a href="login"><span class="menu">LOGIN</span></a>
 			</td>
 			<td width="4%">
-				<a href="#"><span class="menu">JOIN</span></a>
+				<a href="join"><span class="menu">JOIN</span></a>
 			</td>
 			<td width="6%">
-				<a href="#"><span class="menu">PROFILE</span></a>
+				<a href="profile"><span class="menu">PROFILE</span></a>
 			</td>
 			<td width="5%">
 				<a href="#"><span class="menu">BOARD</span></a>
 			</td>
 			<td width="5%">
-				<a href="#"><span class="menu">CONTACT</span></a>
+				<a href="contact"><span class="menu">CONTACT</span></a>
 			</td>
 			<td width="5%">
 				&nbsp;
