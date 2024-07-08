@@ -1,6 +1,10 @@
 package com.gyojincompany.profile.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.aot.hint.annotation.Reflective;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,6 +15,7 @@ import com.gyojincompany.profile.dao.MemberDao;
 import com.gyojincompany.profile.dto.MemberDto;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
@@ -100,5 +105,30 @@ public class ProfileController {
 		}
 		return "loginOk";
 	}
+	
+	@GetMapping(value = "/logout")
+	public String logout(HttpSession session, HttpServletResponse response) {
+		
+		//컨트롤러에서 경고창 띄우기
+		try {
+			response.setContentType("text/html;charset=utf-8");//경고창 텍스트를 utf-8로 인코딩
+			response.setCharacterEncoding("utf-8");
+			PrintWriter printWriter = response.getWriter();
+			printWriter.println("<script>alert('"+"로그아웃 하시겠습니까?"+"');location.href='"+"login"+"';</script>");
+			printWriter.flush();
+			session.invalidate();//로그아웃->세션삭제
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return "login";
+	}
+	
+	
+	
+	
+	
+	
 	
 }
