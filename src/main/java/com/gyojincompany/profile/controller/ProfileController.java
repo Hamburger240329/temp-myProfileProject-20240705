@@ -65,6 +65,14 @@ public class ProfileController {
 		int idCheck = memberDao.idcheckDao(request.getParameter("mid"));
 		// idCheck == 1이면 가입불가, 0이면 가입가능
 		
+		if (idCheck == 1) {//참이면 가입불가
+			model.addAttribute("joinFail", 1);			
+		} else {
+			//가입성공
+			memberDao.joinDao(request.getParameter("mid"), request.getParameter("mpw"), request.getParameter("mname"), request.getParameter("memail"));
+			model.addAttribute("mid", request.getParameter("mid"));
+			model.addAttribute("mname", request.getParameter("mname"));			
+		}
 		return "joinOk";
 	}
 	
