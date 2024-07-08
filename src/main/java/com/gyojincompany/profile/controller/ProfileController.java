@@ -8,8 +8,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.gyojincompany.profile.dao.MemberDao;
+import com.gyojincompany.profile.dto.MemberDto;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class ProfileController {
@@ -74,6 +76,29 @@ public class ProfileController {
 			model.addAttribute("mname", request.getParameter("mname"));			
 		}
 		return "joinOk";
+	}
+	
+	@PostMapping(value = "/loginOk")
+	public String loginOk(HttpServletRequest request, Model model, HttpSession session) {
+		
+		MemberDao memberDao = sqlSession.getMapper(MemberDao.class);		
+		
+		int loginCheck = memberDao.loginCheckDao(request.getParameter("mid"), request.getParameter("mpw"));
+		// loginCheck == 1이면 로그인 성공, 0이면 로그인 실패
+		
+		MemberDto memberDto = null;
+		
+		if (loginCheck != 1) {//참이면 로그인 실패
+			model.addAttribute("loginFail", 1);			
+		} else {
+			//로그인 성공->세션에 현재 로그인 성공된 아이디를 저장			
+			session.setAttribute("sessionId", request.getParameter("mid"));	
+			memberDto = memberDao.getMemberInfoDao(request.getParameter("mid"));
+			
+			model.addAttribute("mname", memberDto.getMname());//로그인 회원 이름		
+			model.addAttribute("mdate", memberDto.getMdate());//로그인 회원 가입일
+		}
+		return "loginOk";
 	}
 	
 }

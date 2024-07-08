@@ -10,9 +10,9 @@
 <title>My Profile</title>
 </head>
 <body>
-	<c:if test="${joinFail == 1}">
+	<c:if test="${loginFail == 1}">
 		<script type="text/javascript">
-			alert("가입하시려는 아이디는 이미 가입된 아이디입니다. 다시 확인해 주세요.");
+			alert("아이디 또는 비밀번호가 잘못되었습니다. 다시 확인해 주세요.");
 			history.go(-1);
 		</script>
 	</c:if>
@@ -37,10 +37,10 @@
 					<tr>
 						<td align="center">
 							<span class="content_text">							
-							${mname }님 회원가입을 축하드립니다.<br>
-							가입하신 아이디는 ${mid } 입니다.<br>
-							로그인 후 게시판에 글을 쓰실 수 있습니다.<br><br>
-							<input class="btn01" type="button" value="로그인" onclick="javascript:window.location.href='login'">
+							${mname }님 로그인을 축하드립니다.<br>
+							${mname }님의 가입일은 ${mdate } 입니다.<br>
+							게시판에 글을 쓰실 수 있습니다.<br><br>
+							<input class="btn01" type="button" value="글쓰기" onclick="javascript:window.location.href='write'">
 							</span>
 						</td>						
 					</tr>					

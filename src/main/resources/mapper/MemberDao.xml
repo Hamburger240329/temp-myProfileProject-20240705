@@ -16,4 +16,14 @@
 		SELECT count(*) FROM pmembers WHERE mid=#{param1}
 	</select>
 	
+	<!-- 로그인 체크 -->
+	<select id="loginCheckDao" resultType="int">
+		SELECT count(*) FROM pmembers WHERE mid=#{param1} AND mpw=#{param2}
+	</select>
+	
+	<select id="getMemberInfoDao" resultType="com.gyojincompany.profile.dto.MemberDto">
+		SELECT * FROM pmembers WHERE mid=#{param1}
+	</select>
+	
+	
 </mapper> 
