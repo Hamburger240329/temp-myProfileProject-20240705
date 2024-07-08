@@ -17,7 +17,7 @@
 				<a href="index"><span class="menu">HOME</span></a>
 			</td>
 			<td width="5%">
-				<a href="#"><span class="menu">LOGIN</span></a>
+				<a href="login"><span class="menu">LOGIN</span></a>
 			</td>
 			<td width="4%">
 				<a href="#"><span class="menu">JOIN</span></a>

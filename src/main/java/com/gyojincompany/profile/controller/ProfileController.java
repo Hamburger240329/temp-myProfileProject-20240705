@@ -16,4 +16,9 @@ public class ProfileController {
 		return "index";
 	}
 	
+	@GetMapping(value = "/login")
+	public String login() {
+		return "login";
+	}
+	
 }
