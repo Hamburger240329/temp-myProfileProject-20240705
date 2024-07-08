@@ -1,5 +1,10 @@
 @charset "UTF-8";
 
+body {
+	margin:0;
+	padding:0;
+}
+
 span.title_text01 {
 	font-size: 80px;
 	color: #31352E;
@@ -26,4 +31,12 @@ span.skill_text02 {
 	color: #59981A;
 	font-family: Arial;
 	font-weight: bold;
+}
+
+td.skill_box {
+	background-color: #3D550C;
+}
+
+td.image_box {
+	background-color: #ECF87F;
 }
