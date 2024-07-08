@@ -1,14 +1,21 @@
 package com.gyojincompany.profile.controller;
 
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.gyojincompany.profile.dao.MemberDao;
+
 import jakarta.servlet.http.HttpServletRequest;
 
 @Controller
 public class ProfileController {
+	
+	@Autowired
+	private SqlSession sqlSession;
 	
 	@GetMapping(value = "/")
 	public String home() {
@@ -52,6 +59,11 @@ public class ProfileController {
 	
 	@PostMapping(value = "/joinOk")
 	public String joinOk(HttpServletRequest request, Model model) {
+		
+		MemberDao memberDao = sqlSession.getMapper(MemberDao.class);		
+		
+		int idCheck = memberDao.idcheckDao(request.getParameter("mid"));
+		// idCheck == 1이면 가입불가, 0이면 가입가능
 		
 		return "joinOk";
 	}
