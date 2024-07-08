@@ -125,6 +125,20 @@ public class ProfileController {
 		return "login";
 	}
 	
+	@GetMapping(value = "/modify")
+	public String modify(HttpSession session, Model model) {
+		
+		String sid = (String) session.getAttribute("sessionId");
+		// 현재 로그인한 회원의 아이디
+		MemberDao memberDao = sqlSession.getMapper(MemberDao.class);
+		
+		MemberDto memberDto = memberDao.getMemberInfoDao(sid);//현재 로그인한 회원의 모든 정보
+		
+		model.addAttribute("mDto", memberDto);
+		
+		return "modifyForm";
+	}
+	
 	
 	
 	
