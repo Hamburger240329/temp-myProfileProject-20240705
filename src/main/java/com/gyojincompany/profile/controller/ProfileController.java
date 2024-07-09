@@ -196,6 +196,29 @@ public class ProfileController {
 		return "modifyOk";
 	}
 	
+	@GetMapping(value = "/contentView")
+	public String contentView(HttpServletRequest request, Model model) {
+		
+		BoardDao boardDao = sqlSession.getMapper(BoardDao.class);
+		MemberDao memberDao = sqlSession.getMapper(MemberDao.class);
+		
+		BoardDto bDto = boardDao.contentViewDao(request.getParameter("bnum"));
+		
+		MemberDto mDto = memberDao.getMemberInfoDao(bDto.getBid());
+		
+		model.addAttribute("bDto", bDto);
+		model.addAttribute("mDto", mDto);
+		
+		return "contentView";
+	}
+	
+	@GetMapping(value = "/contentModify")
+	public String contentModify(HttpServletRequest request, Model model) {
+		
+		
+		
+		return "contentModify";
+	}
 	
 	
 	
