@@ -6,4 +6,8 @@
 
 <mapper namespace="com.gyojincompany.profile.dao.BoardDao">
 
+	<insert id="writeDao">
+		INSERT INTO pboard(bnum, bid, bname, btitle, bcontent) VALUES(pboard_seq.nextval, #{param1}, #{param2}, #{param3}, #{param4})
+	</insert>
+
 </mapper>    
