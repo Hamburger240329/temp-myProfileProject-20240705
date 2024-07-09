@@ -2,6 +2,7 @@ package com.gyojincompany.profile.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.aot.hint.annotation.Reflective;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.gyojincompany.profile.dao.BoardDao;
 import com.gyojincompany.profile.dao.MemberDao;
+import com.gyojincompany.profile.dto.BoardDto;
 import com.gyojincompany.profile.dto.MemberDto;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -94,8 +96,13 @@ public class ProfileController {
 	}
 	
 	@GetMapping(value = "/list")
-	public String list() {
+	public String list(Model model) {
 		
+		BoardDao boardDao = sqlSession.getMapper(BoardDao.class);
+		
+		ArrayList<BoardDto> bDtos = boardDao.listDao();
+		
+		model.addAttribute("bDtos", bDtos);
 		
 		return "boardlist";
 	}
