@@ -25,7 +25,9 @@
 			</td>
 		</tr>
 		<tr>
-			<td class="content_box" align="center">							
+			<td class="content_box" align="center">
+				<form action="contentModifyOk">	
+				<input type="hidden" name="bnum" value="${bDto.bnum }">						
 				<table border="0" cellpadding="10" cellspacing="0">
 					<tr>
 						<td align="right">
@@ -56,7 +58,7 @@
 							<span class="content_text">제 목 :</span>
 						</td>
 						<td>
-							<input class="input_box02_view" type="text" name="btitle" value="${bDto.btitle }" readonly="readonly">
+							<input class="input_box02" type="text" name="btitle" value="${bDto.btitle }">
 						</td>
 					</tr>
 					<tr>
@@ -64,15 +66,7 @@
 							<span class="content_text">내 용 :</span>
 						</td>
 						<td>
-							<textarea class="text_area_view" rows="10" cols="50" name="bcontent" readonly="readonly">${bDto.bcontent }</textarea>
-						</td>
-					</tr>
-					<tr>
-						<td align="right">
-							<span class="content_text">등 록 일 :</span>
-						</td>
-						<td>
-							<input class="input_box02_view" type="text" name="bdate" value="${bDto.bdate }" readonly="readonly">
+							<textarea class="text_area" rows="10" cols="50" name="bcontent">${bDto.bcontent }</textarea>
 						</td>
 					</tr>					
 					<tr>
@@ -80,12 +74,13 @@
 					</tr>
 					<tr>
 						<td colspan="2" align="center">							
-							<input class="btn01" type="button" value="수정" onclick="javascript:window.location.href='contentModify?bnum=${bDto.bnum}'">
-							<input class="btn01" type="button" value="삭제" onclick="javascript:window.location.href='delete?'">
+							<input class="btn01" type="submit" value="수정완료">
+							<input class="btn01" type="button" value="수정취소" onclick="javascript:hitory.go(-1)">
 							<input class="btn01" type="button" value="글목록" onclick="javascript:window.location.href='list'">
 						</td>
 					</tr>
-				</table>				
+				</table>
+				</form>				
 			</td>
 		</tr>
 	</table>

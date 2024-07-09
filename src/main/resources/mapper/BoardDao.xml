@@ -20,5 +20,14 @@
 	<select id="contentViewDao" resultType="com.gyojincompany.profile.dto.BoardDto">
 		SELECT * FROM pboard WHERE bnum=#{param1}
 	</select>
+	
+	<!-- 게시판 글 수정 -->
+	<update id="contentModifyDao">
+		UPDATE pboard SET btitle=#{param2}, bcontent=#{param3} WHERE bnum=#{param1}
+	</update>
+	
+	
+	
+	
 
 </mapper>    
