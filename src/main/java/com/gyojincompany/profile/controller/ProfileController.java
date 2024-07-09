@@ -213,17 +213,34 @@ public class ProfileController {
 	}
 	
 	@GetMapping(value = "/contentModify")
-	public String contentModify(HttpServletRequest request, Model model) {
+	public String contentModify(HttpServletRequest request, Model model, HttpSession session, HttpServletResponse response) {
 		
 		BoardDao boardDao = sqlSession.getMapper(BoardDao.class);
 		MemberDao memberDao = sqlSession.getMapper(MemberDao.class);
 		
+		String sid = (String) session.getAttribute("sessionId");//현재 로그인 중인 아이디
+		
 		BoardDto bDto = boardDao.contentViewDao(request.getParameter("bnum"));
 		
-		MemberDto mDto = memberDao.getMemberInfoDao(bDto.getBid());
-		
-		model.addAttribute("bDto", bDto);
-		model.addAttribute("mDto", mDto);
+		if (sid.equals(bDto.getBid())||(sid.equals("admin"))) {//참이면 글을 쓴 회원과 현재 로그인 중인 아이디가 일치->수정,삭제 가능
+			MemberDto mDto = memberDao.getMemberInfoDao(bDto.getBid());
+			
+			model.addAttribute("bDto", bDto);
+			model.addAttribute("mDto", mDto);
+		} else {//글을 쓴 회원과 현재 로그인한 아이디가 다르므로 수정 삭제 권한 x
+			
+			//컨트롤러에서 경고창 띄우기
+			try {
+				response.setContentType("text/html;charset=utf-8");//경고창 텍스트를 utf-8로 인코딩
+				response.setCharacterEncoding("utf-8");
+				PrintWriter printWriter = response.getWriter();
+				printWriter.println("<script>alert('"+"글 수정은 해당 글을 쓴 회원만 가능합니다!"+"');history.go(-1);</script>");
+				printWriter.flush();				
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 		
 		return "contentModify";
 	}
